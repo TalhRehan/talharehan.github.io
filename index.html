@@ -192,9 +192,34 @@ footer{padding:1.75rem 5%;background:var(--bg);border-top:1px solid var(--border
 
 /* RESPONSIVE */
 @media(max-width:1024px){
-  .hero-inner{grid-template-columns:1fr}.hero-visual{display:none}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-visual{display:none}
   .proj-card.feat,.proj-card.side,.proj-card.half{grid-column:span 12}
   .about-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .hero-visual{
+    display:flex;
+    justify-content:center;
+    margin-top:2rem;
+  }
+  .avatar-wrap{
+    width:160px;
+    height:160px;
+  }
+  .av-img{
+    width:140px;
+    height:140px;
+  }
+  .av-ring{inset:-8px}
+  .av-ring2{inset:4px}
+  .av-badge{display:none}
+  .nav-logo{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+  }
+  nav{position:fixed;justify-content:space-between}
 }
 @media(max-width:768px){
   section{padding:52px 5%}.nav-links{display:none}.hamburger{display:flex}
