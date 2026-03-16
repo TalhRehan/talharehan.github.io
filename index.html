@@ -3,8 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="your-photo.png">
-<link rel="apple-touch-icon" href="favicon.png">
 <title>Talha Rehan — ML Engineer & AI Specialist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,13 +21,13 @@ html{scroll-behavior:smooth}
   --sep1:var(--bg2);--sep2:var(--bg);
 }
 
-/* ===== LIGHT THEME — warm slate, no harsh white ===== */
+/* ===== LIGHT THEME — cool slate blue, never harsh white ===== */
 [data-theme="light"]{
-  --bg:#EEF2F7;--bg2:#E3EAF3;--surface:#F8FAFC;--surface2:#E8EFF7;
-  --border:rgba(0,150,136,0.18);--border2:rgba(30,50,80,0.1);
-  --teal:#007D6E;--teal2:#006358;--teal-glow:rgba(0,125,110,0.15);
-  --text:#1B2A3B;--text2:#4A6070;--text3:#8A9EAE;
-  --nav-bg:rgba(238,242,247,0.9);--tag-bg:rgba(30,50,80,0.05);
+  --bg:#C8D8EB;--bg2:#B8CADE;--surface:#D4E2F2;--surface2:#BDD0E5;
+  --border:rgba(0,140,126,0.22);--border2:rgba(20,50,90,0.14);
+  --teal:#006E62;--teal2:#005A50;--teal-glow:rgba(0,110,98,0.2);
+  --text:#0A1929;--text2:#2E4A62;--text3:#6A88A0;
+  --nav-bg:rgba(200,216,235,0.93);--tag-bg:rgba(10,30,70,0.08);
   --sep1:var(--bg2);--sep2:var(--bg);
 }
 
@@ -187,10 +185,17 @@ h2{font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-0.03em;line-he
 .stat-num{font-family:var(--font-head);font-size:1.75rem;font-weight:800;color:var(--text);line-height:1}
 .stat-num span{color:var(--teal)}
 .stat-label{font-size:0.8125rem;color:var(--text3);margin-top:0.25rem}
+.hero-skills-strip{display:flex;flex-wrap:wrap;align-items:center;gap:0.5rem}
+.hstrip-label{font-family:var(--font-mono);font-size:0.72rem;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;margin-right:0.25rem}
+.hstrip-tag{
+  font-family:var(--font-mono);font-size:0.72rem;padding:0.22rem 0.625rem;
+  border:1px solid rgba(0,210,180,0.3);border-radius:20px;color:var(--teal);
+  background:rgba(0,210,180,0.07);
+}
 
 /* Avatar */
 .hero-visual{display:flex;justify-content:center;align-items:center;animation:fadeIn 1s ease 0.4s both}
-.avatar-wrap{position:relative;width:340px;height:340px;display:flex;align-items:center;justify-content:center}
+.avatar-wrap{position:relative;width:360px;height:360px;display:flex;align-items:center;justify-content:center}
 .avatar-ring{
   position:absolute;inset:0;border-radius:50%;
   border:1.5px solid rgba(0,210,180,0.22);
@@ -211,13 +216,13 @@ h2{font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-0.03em;line-he
   background:radial-gradient(circle,rgba(0,210,180,0.1) 0%,transparent 70%);
 }
 .avatar-img{
-  width:240px;height:240px;border-radius:50%;
+  width:260px;height:260px;border-radius:50%;
   border:3px solid rgba(0,210,180,0.3);overflow:hidden;
-  position:relative;z-index:1;background:var(--surface2);
+  position:relative;z-index:1;background:transparent;
   box-shadow:0 0 60px rgba(0,210,180,0.1),0 20px 60px rgba(0,0,0,0.3);
   display:flex;align-items:center;justify-content:center;
 }
-.avatar-img img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.avatar-img img{width:100%;height:100%;object-fit:cover;object-position:center 8%;display:block}
 .avatar-placeholder{
   display:flex;flex-direction:column;align-items:center;gap:0.5rem;
   color:var(--text3);font-family:var(--font-mono);font-size:0.7rem;text-align:center;padding:1rem;
@@ -234,43 +239,47 @@ h2{font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-0.03em;line-he
 
 /* ===== SKILLS ===== */
 #skills{background:var(--bg2)}
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-top:3rem}
-.skill-card{
-  background:var(--surface);border:1px solid var(--border2);
-  border-radius:var(--r2);padding:1.75rem;transition:var(--trans);position:relative;overflow:hidden;
+/* Two-column: left label col + right tags col */
+.skills-two-col{
+  display:grid;grid-template-columns:200px 1fr;gap:0;
+  margin-top:3rem;border:1px solid var(--border2);border-radius:var(--r2);overflow:hidden;
 }
-.skill-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--teal),transparent);opacity:0;transition:var(--trans);
+.skill-row{
+  display:contents;
 }
-.skill-card:hover{border-color:var(--border);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.12),0 0 30px var(--teal-glow)}
-.skill-card:hover::before{opacity:1}
-.skill-icon{
-  width:44px;height:44px;background:rgba(0,210,180,0.1);border-radius:10px;
-  display:flex;align-items:center;justify-content:center;font-size:1.25rem;
-  margin-bottom:1rem;border:1px solid rgba(0,210,180,0.2);
+.skill-row-label{
+  padding:1rem 1.25rem;border-bottom:1px solid var(--border2);
+  border-right:1px solid var(--border2);
+  background:var(--surface2);
+  display:flex;align-items:center;
+  font-family:var(--font-head);font-size:0.85rem;font-weight:700;
+  color:var(--teal);letter-spacing:-0.01em;
 }
-.skill-card h3{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:0.75rem}
+.skill-row-label:last-of-type,.skill-row-tags:last-of-type{border-bottom:none}
+.skill-row-tags{
+  padding:0.875rem 1.25rem;border-bottom:1px solid var(--border2);
+  background:var(--surface);
+  display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;
+}
 .skill-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
 .tag{
-  font-family:var(--font-mono);font-size:0.7rem;padding:0.25rem 0.625rem;
-  background:var(--tag-bg);border:1px solid var(--border2);border-radius:4px;
-  color:var(--text2);transition:var(--trans);
+  font-family:var(--font-mono);font-size:0.72rem;padding:0.3rem 0.75rem;
+  background:rgba(0,210,180,0.08);border:1px solid rgba(0,210,180,0.22);
+  border-radius:20px;color:var(--teal);font-weight:500;transition:var(--trans);
 }
-.skill-card:hover .tag{border-color:rgba(0,210,180,0.2);color:var(--text)}
+.tag:hover{background:rgba(0,210,180,0.16);color:var(--teal)}
+[data-theme="light"] .tag{background:rgba(0,110,98,0.1);border-color:rgba(0,110,98,0.3);color:var(--teal)}
 
 /* ===== EXPERIENCE ===== */
 #experience{background:var(--bg)}
-.exp-timeline{margin-top:3rem;position:relative}
-.exp-timeline::before{
-  content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;
-  background:linear-gradient(to bottom,var(--teal),transparent);
+.exp-timeline{margin-top:3rem;display:flex;flex-direction:column;gap:1.25rem}
+.exp-item{
+  padding:1.75rem 2rem;position:relative;
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:var(--r2);transition:var(--trans);
+  border-left:3px solid var(--teal);
 }
-.exp-item{padding-left:2.5rem;margin-bottom:3rem;position:relative}
-.exp-item::before{
-  content:'';position:absolute;left:-4px;top:6px;width:9px;height:9px;
-  border-radius:50%;background:var(--teal);box-shadow:0 0 12px var(--teal);
-}
+.exp-item:hover{border-color:var(--border);box-shadow:0 12px 40px rgba(0,0,0,0.1),0 0 20px var(--teal-glow)}
 .exp-meta{display:flex;align-items:center;flex-wrap:wrap;gap:0.75rem;margin-bottom:0.5rem}
 .exp-company{font-family:var(--font-head);font-size:1.125rem;font-weight:700;color:var(--text)}
 .exp-divider{color:var(--text3)}
@@ -325,11 +334,21 @@ h2{font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-0.03em;line-he
 .about-certs{margin-top:2.5rem}
 .about-certs h4{font-family:var(--font-head);font-size:0.875rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem}
 .cert-list{display:flex;flex-direction:column;gap:0.75rem}
-.cert-item{display:flex;align-items:center;gap:0.875rem;padding:0.875rem 1rem;background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);transition:var(--trans)}
-.cert-item:hover{border-color:var(--border)}
-.cert-icon{font-size:1rem;flex-shrink:0}
-.cert-name{font-size:0.875rem;color:var(--text2)}
-.cert-source{margin-left:auto;font-family:var(--font-mono);font-size:0.7rem;color:var(--text3)}
+.cert-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.875rem 1.25rem;
+  background:var(--surface);
+  border:1px solid var(--border2);
+  border-left:3px solid var(--teal);
+  border-radius:var(--r);transition:var(--trans);gap:1rem;
+}
+.cert-item:hover{border-color:var(--teal);box-shadow:0 4px 20px var(--teal-glow);transform:translateX(3px)}
+.cert-name{font-size:0.875rem;color:var(--text);font-weight:600;flex:1}
+.cert-source{
+  font-family:var(--font-mono);font-size:0.7rem;
+  background:rgba(0,210,180,0.1);border:1px solid rgba(0,210,180,0.2);
+  color:var(--teal);padding:0.15rem 0.5rem;border-radius:4px;white-space:nowrap;
+}
 .about-visual{display:flex;flex-direction:column;gap:1rem}
 .info-card{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r2);padding:1.5rem;transition:var(--trans)}
 .info-card:hover{border-color:var(--border);transform:translateX(4px)}
@@ -396,6 +415,13 @@ footer{
 .reveal-delay-2{transition-delay:0.2s}
 .reveal-delay-3{transition-delay:0.3s}
 .reveal-delay-4{transition-delay:0.4s}
+
+/* Skills table responsive */
+@media(max-width:640px){
+  .skills-two-col{grid-template-columns:1fr}
+  .skill-row-label{border-right:none;border-bottom:1px solid var(--border2);border-top:1px solid var(--border2)}
+  .skill-row-tags{border-bottom:none}
+}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:1024px){
@@ -468,6 +494,16 @@ footer{
         <div><div class="stat-num">20<span>+</span></div><div class="stat-label">Projects Delivered</div></div>
         <div><div class="stat-num">3<span>x</span></div><div class="stat-label">Companies</div></div>
       </div>
+      <!-- Quick skills strip under stats -->
+      <div class="hero-skills-strip" style="margin-top:2rem;animation:fadeInUp 0.8s ease 0.6s both">
+        <span class="hstrip-label">Core Stack:</span>
+        <span class="hstrip-tag">PyTorch</span>
+        <span class="hstrip-tag">LangChain</span>
+        <span class="hstrip-tag">FastAPI</span>
+        <span class="hstrip-tag">YOLO</span>
+        <span class="hstrip-tag">RAG</span>
+        <span class="hstrip-tag">Flutter</span>
+      </div>
     </div>
 
     <!-- ============================================================
@@ -509,32 +545,22 @@ footer{
   <div class="container">
     <div class="section-label">Technical Expertise</div>
     <h2 class="reveal">Skills &amp; Technologies</h2>
-    <p class="reveal reveal-delay-1" style="color:var(--text2);max-width:600px;font-weight:300">A full-stack AI practitioner covering the entire model lifecycle — from research and training to deployment and production monitoring.</p>
-    <div class="skills-grid">
-      <div class="skill-card reveal reveal-delay-1">
-        <div class="skill-icon">🧠</div><h3>Generative AI &amp; LLMs</h3>
-        <div class="skill-tags"><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">CrewAI</span><span class="tag">Hugging Face</span><span class="tag">RAG</span><span class="tag">LoRA/QLoRA</span><span class="tag">PEFT</span><span class="tag">LLaMA-2</span></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-2">
-        <div class="skill-icon">👁️</div><h3>Computer Vision</h3>
-        <div class="skill-tags"><span class="tag">YOLO v11</span><span class="tag">OpenCV</span><span class="tag">MediaPipe</span><span class="tag">BoT-SORT</span><span class="tag">MobileNetV2</span><span class="tag">Object Tracking</span></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-3">
-        <div class="skill-icon">🔬</div><h3>Deep Learning</h3>
-        <div class="skill-tags"><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">CNNs</span><span class="tag">Transformers</span><span class="tag">GANs</span><span class="tag">Transfer Learning</span></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-1">
-        <div class="skill-icon">⚡</div><h3>Backend &amp; APIs</h3>
-        <div class="skill-tags"><span class="tag">FastAPI</span><span class="tag">Flask</span><span class="tag">Django</span><span class="tag">REST APIs</span><span class="tag">Docker</span><span class="tag">AWS EC2</span><span class="tag">Azure</span></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-2">
-        <div class="skill-icon">📱</div><h3>Mobile Development</h3>
-        <div class="skill-tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Firebase</span><span class="tag">State Management</span><span class="tag">API Integration</span></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-3">
-        <div class="skill-icon">🗃️</div><h3>Data &amp; Automation</h3>
-        <div class="skill-tags"><span class="tag">Python</span><span class="tag">SQL/MySQL</span><span class="tag">MongoDB</span><span class="tag">Selenium</span><span class="tag">BeautifulSoup</span><span class="tag">FAISS</span></div>
-      </div>
+    <p class="reveal reveal-delay-1" style="color:var(--text2);max-width:600px;font-weight:300;margin-bottom:0.25rem">Full-stack AI practitioner — from model research and fine-tuning to deployment and production APIs.</p>
+    <div class="skills-two-col reveal">
+      <div class="skill-row-label">Generative AI &amp; LLMs</div>
+      <div class="skill-row-tags"><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">CrewAI</span><span class="tag">Hugging Face</span><span class="tag">RAG</span><span class="tag">LoRA / QLoRA</span><span class="tag">PEFT</span><span class="tag">LLaMA-2</span><span class="tag">OpenAI API</span></div>
+      <div class="skill-row-label">Computer Vision</div>
+      <div class="skill-row-tags"><span class="tag">YOLO v11</span><span class="tag">OpenCV</span><span class="tag">MediaPipe</span><span class="tag">BoT-SORT</span><span class="tag">MobileNetV2</span><span class="tag">Object Tracking</span></div>
+      <div class="skill-row-label">Deep Learning</div>
+      <div class="skill-row-tags"><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">CNNs</span><span class="tag">Transformers</span><span class="tag">GANs</span><span class="tag">Transfer Learning</span><span class="tag">Fine-Tuning</span></div>
+      <div class="skill-row-label">Backend &amp; APIs</div>
+      <div class="skill-row-tags"><span class="tag">FastAPI</span><span class="tag">Flask</span><span class="tag">Django</span><span class="tag">REST APIs</span><span class="tag">Docker</span><span class="tag">AWS EC2</span><span class="tag">Azure</span><span class="tag">CI/CD</span></div>
+      <div class="skill-row-label">Mobile Dev</div>
+      <div class="skill-row-tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Firebase</span><span class="tag">State Mgmt</span><span class="tag">API Integration</span></div>
+      <div class="skill-row-label">Languages</div>
+      <div class="skill-row-tags"><span class="tag">Python</span><span class="tag">C++</span><span class="tag">JavaScript</span><span class="tag">SQL</span><span class="tag">Dart</span><span class="tag">Java</span></div>
+      <div class="skill-row-label">Data &amp; Automation</div>
+      <div class="skill-row-tags"><span class="tag">MongoDB</span><span class="tag">MySQL</span><span class="tag">FAISS</span><span class="tag">Selenium</span><span class="tag">BeautifulSoup</span><span class="tag">Web Scraping</span></div>
     </div>
   </div>
 </section>
@@ -663,10 +689,10 @@ footer{
         <div class="about-certs">
           <h4>Certifications</h4>
           <div class="cert-list">
-            <div class="cert-item"><span class="cert-icon">🎓</span><span class="cert-name">Machine Learning Specialization</span><span class="cert-source">Coursera</span></div>
-            <div class="cert-item"><span class="cert-icon">🕷️</span><span class="cert-name">Web Scraping Automation (BS4 + Selenium)</span><span class="cert-source">Udemy</span></div>
-            <div class="cert-item"><span class="cert-icon">👔</span><span class="cert-name">Executive Diploma in Leadership Management</span><span class="cert-source">Alison</span></div>
-            <div class="cert-item"><span class="cert-icon">🗄️</span><span class="cert-name">Intro to SQL</span><span class="cert-source">Simplilearn</span></div>
+            <div class="cert-item"><span class="cert-name">Machine Learning Specialization</span><span class="cert-source">Coursera</span></div>
+            <div class="cert-item"><span class="cert-name">Web Scraping Automation — BS4 &amp; Selenium</span><span class="cert-source">Udemy</span></div>
+            <div class="cert-item"><span class="cert-name">Executive Diploma in Leadership Management</span><span class="cert-source">Alison</span></div>
+            <div class="cert-item"><span class="cert-name">Intro to SQL</span><span class="cert-source">Simplilearn</span></div>
           </div>
         </div>
       </div>
